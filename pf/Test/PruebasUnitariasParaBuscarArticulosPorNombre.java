@@ -8,39 +8,40 @@ import domain.Tienda;
 
 public class PruebasUnitariasParaBuscarArticulosPorNombre {
     private Tienda tienda;
-   
-    
+ 
+           
     @Before
     public void setUp(){
         tienda = new Tienda();
-        tienda.getInventario().add(new Articulo("004","Camisa","Prendas Superiores",12.5)) ;
-         
-       
+        tienda.getInventario().add(new Articulo("004","Camisa","Prendas Superiores",12.5));  
     
     }
     
      @Test
      public void buscarListaArticulosPorNombreExistente(){
-        ArrayList resultado = new ArrayList<>();
-                resultado.add(tienda.nombre("Camisa"));
+        ArrayList<Articulo> resultado = tienda.nombre("Camisa");
+    
                     
      
-     assertEquals(1,resultado.size());
-     
-             
+     assertEquals(1,resultado.size());        
     }       
       
     
     @Test 
     public void buscarPorNombreInexistente(){
-      ArrayList resultado = tienda.nombre("Zapatos");
+      ArrayList <Articulo> resultado = tienda.nombre("Blusa");
       
      assertEquals(0,resultado.size());
     
     }
- 
- 
     
             
-            
+    @Test 
+    public void buscarArticuloConMayusculasYMinusculas(){
+        ArrayList resultado = tienda.nombre("camisa");
+        
+        
+        assertEquals(1,resultado.size()); 
+    }    
+
 }
