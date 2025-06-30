@@ -20,8 +20,9 @@ public class PruebasUnitariasParaBuscarArticulosPorCategoria {
     
      @Test
      public void buscarListaArticulosPorCategoriaExistente(){
-      ArrayList resultado = new ArrayList<>();
-            resultado.add(tienda.categoria("Prendas Superiores"));
+      ArrayList resultado = tienda.categoria("Prendas Superiores");
+            
+            
       assertEquals(1,resultado.size());
              
     }       
@@ -30,11 +31,22 @@ public class PruebasUnitariasParaBuscarArticulosPorCategoria {
     @Test 
     public void buscarPorCategoriaInexistente(){
       ArrayList resultado = tienda.categoria("Prendas Extra");
-      
-      assertEquals(0,resultado.size());
+           
+            
+      assertTrue(resultado.isEmpty());
     
     } 
-      
+    
+    
+    @Test 
+    public void buscarArticuloConMayusculasYMinusculas(){
+        ArrayList resultado = tienda.categoria("prendas superiores");
+        
+        
+        assertEquals(1,resultado.size());
+        
+        
+    }
 }
             
             
